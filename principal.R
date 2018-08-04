@@ -5,7 +5,7 @@ library(magrittr)
 library(dplyr)
 
 # mude esse diretorio- ele deve informar onde estão os arquivos csv
-setwd('/home/flavio/trabalho-geoanalise/projeto-r/warehouse/')
+setwd('C:/Users/logonrmlocal/Documents/trabalho_geoanalise_r/warehouse')
 
 DM_IES <- read.csv(file = 'DM_IES.csv', 
                    header = TRUE, 
@@ -57,3 +57,28 @@ mergedDF3 <- merge(x = mergedDF2,
                    by = "CO_IES")
 
 View(mergedDF3)
+
+# KPI 1 - Percentual de professores por sexo
+
+kpi1_qtd_docente_por_sexo <- count(mergedDF3, c(DS_SEXO_DOCENTE))
+kpi1_qtd_docente_por_sexo$percent <- prop.table(kpi1_qtd_docente_por_sexo$n) * 100
+View(kpi1_qtd_docente_por_sexo)
+
+# KPI 2 - Percentual de professores por escolaridade
+
+kpi1_qtd_docente_por_escolaridade <- count(mergedDF3, c(mergedDF3$DS_ESCOLARIDADE_DOCENTE))
+kpi1_qtd_docente_por_escolaridade$percent <- prop.table(kpi1_qtd_docente_por_escolaridade$n) * 100
+View(kpi1_qtd_docente_por_escolaridade)
+
+# KPI 3 - Percentual de professores por raça
+
+kpi1_qtd_docente_por_raca <- count(mergedDF3, c(mergedDF3$DS_COR_RACA_DOCENTE))
+kpi1_qtd_docente_por_raca$percent <- prop.table(kpi1_qtd_docente_por_raca$n) * 100
+View(kpi1_qtd_docente_por_raca)
+
+# KPI 4 - Total de alunos (SUGESTÃO)
+# ...
+
+
+
+
