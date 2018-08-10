@@ -34,7 +34,18 @@ DM_CURSO <- read.csv(file = 'DM_CURSO.csv',
                      fileEncoding = "latin1",
                      sep = ";") %>% select('CO_IES',
                                            'NO_CURSO', 
-                                           'DT_INICIO_FUNCIONAMENTO')
+                                           'DT_INICIO_FUNCIONAMENTO',
+                                           'QT_INSCRITOS_PRINCIPAL_EAD',
+                                           'QT_VAGAS_PRINCIPAL_EAD',
+                                           'QT_VAGAS_PRINCIPAL_INTEGRAL',
+                                           'QT_VAGAS_PRINCIPAL_MATUTINO',
+                                           'QT_VAGAS_PRINCIPAL_NOTURNO',
+                                           'QT_VAGAS_PRINCIPAL_VESPERTINO',
+                                           'QT_INSCRITOS_PRINCIPAL_MATU',
+                                           'QT_INSCRITOS_PRINCIPAL_VESP',
+                                           'QT_INSCRITOS_PRINCIPAL_NOTURNO'
+                                           'QT_INSCRITOS_PRINCIPAL_INTE',
+)
 
 DM_IGC <- setNames(read.csv(file = 'DM_IGC.csv',
                             header = TRUE,
@@ -78,6 +89,20 @@ View(kpi1_qtd_docente_por_raca)
 
 # KPI 4 - Total de alunos (SUGESTÃO)
 # ...
+
+kpi1_relacao_candidato_x_vaga_por_curso <- count(DM_CURSO, c(DM_CURSO$NO_CURSO, 
+                                                             DM_CURSO$NO_IES))
+
+                                                             # KPI 4 - Total de alunos (SUGESTÃO)
+# ...
+MEDIA_INSCRITOS_EAD <- round(mean(DM_CURSO$QT_INSCRITOS_PRINCIPAL_EAD, na.rm = TRUE))
+MEDIA_INSCRITOS_INTEGRAL <- round(mean(DM_CURSO$QT_VAGAS_PRINCIPAL_INTEGRAL, na.rm = TRUE))
+MEDIA_INSCRITOS_MATUTINO <- round(mean(DM_CURSO$QT_VAGAS_PRINCIPAL_MATUTINO, na.rm = TRUE))
+MEDIA_INSCRITOS_VESPERTINO <- round(mean(DM_CURSO$QT_VAGAS_PRINCIPAL_VESPERTINO, na.rm = TRUE))
+MEDIA_INSCRITOS_VESPERTINO <- round(mean(DM_CURSO$QT_VAGAS_PRINCIPAL_NOTURNO, na.rm = TRUE))
+
+kpi1_relacao_candidato_x_vaga_por_curso <- count(mergedDF3, c(mergedDF3$NO_CURSO, 
+                                                              mergedDF3$NO_IES))
 
 
 
