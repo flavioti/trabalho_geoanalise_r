@@ -44,8 +44,7 @@ DM_CURSO <- read.csv(file = 'DM_CURSO.csv',
                                            'QT_INSCRITOS_PRINCIPAL_MATU',
                                            'QT_INSCRITOS_PRINCIPAL_VESP',
                                            'QT_INSCRITOS_PRINCIPAL_NOTURNO'
-                                           'QT_INSCRITOS_PRINCIPAL_INTE',
-)
+                                           'QT_INSCRITOS_PRINCIPAL_INTE')
 
 DM_IGC <- setNames(read.csv(file = 'DM_IGC.csv',
                             header = TRUE,
