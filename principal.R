@@ -5,7 +5,7 @@ library(magrittr)
 library(dplyr)
 
 # mude esse diretorio- ele deve informar onde estão os arquivos csv
-setwd('C:/Users/logonrmlocal/Documents/trabalho_geoanalise_r/warehouse')
+setwd('C:/Users/emerson.silva/Documents/workspace/learn/mba/trabalho_geoanalise_r/warehouse')
 
 DM_IES <- read.csv(file = 'DM_IES.csv', 
                    header = TRUE, 
@@ -98,8 +98,21 @@ View(kpi1_qtd_docente_por_raca)
 
 # KPI 4 - Total de alunos (SUGESTÃO)
 
-kp1_qtd_aluno_vespertino_ead_por_curso <- sum(mergedDF3, c(mergedDF3$NO_IES,
-                                                             mergedDF3$QT_VAGAS_PRINCIPAL_EAD)))
+kp1_candidato_vaga <- data.frame(mergedDF3$NO_IES,
+                                 mergedDF3$NO_CURSO,
+                                 mergedDF3$QT_VAGAS_PRINCIPAL_NOTURNO,
+                                 mergedDF3$QT_INSCRITOS_PRINCIPAL_NOTURNO)
 
-View(kp1_qtd_aluno_vespertino_ead_por_curso)
+names(kp1_candidato_vaga)[1] = "Nome Instituição"
+names(kp1_candidato_vaga)[2] = "Curso"
+names(kp1_candidato_vaga)[3] = "Qtde vagas"
+names(kp1_candidato_vaga)[4] = "Qtde Inscritos"
+kp1_candidato_vaga <- data.frame(kp1_candidato_vaga$candidato_x_vaga, 0)
+
+
+kp1_candidato_vaga <- data.frame(kp1_candidato_vaga)
+kp1_candidato_vaga[is.na(kp1_candidato_vaga)] <- 0
+View(kp1_candidato_vaga)
+
+
 
