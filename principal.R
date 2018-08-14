@@ -98,7 +98,7 @@ kpi1_qtd_docente_por_raca <- count(mergedDF3, c(mergedDF3$DS_COR_RACA_DOCENTE))
 kpi1_qtd_docente_por_raca$percent <- prop.table(kpi1_qtd_docente_por_raca$n) * 100
 View(kpi1_qtd_docente_por_raca)
 
-# KPI 4 - Total de alunos (SUGESTÃO)
+# KPI 4 - Relação Candidato Vaga por Curso Noturno
 
 kp1_candidato_vaga <- data.frame(mergedDF3$NO_IES,
                                  mergedDF3$NO_CURSO,
