@@ -52,20 +52,6 @@ DM_CURSO <- read.csv(file = 'DM_CURSO.csv',
                                            'QT_INSCRITOS_PRINCIPAL_INTE')
 
 
-#ETL NA TO 0
-dados <- data.frame(DM_CURSO)
-dados$substituir <- c(DM_CURSO$QT_VAGAS_PRINCIPAL_EAD)
-View(dados)
-
-dados[is.na(dados)] <- 0
-
-DM_CURSO
-
-summary(dados)
-
-View(DM_CURSO)
-
-
 DM_IGC <- setNames(read.csv(file = 'DM_IGC.csv',
                             header = TRUE,
                             stringsAsFactors = FALSE,
@@ -87,6 +73,13 @@ mergedDF3 <- merge(x = mergedDF2,
                    by = "CO_IES")
 
 View(mergedDF3)
+
+mergedDF3 <- data.frame(mergedDF3)
+mergedDF3[is.na(mergedDF3)] <- 0
+
+View(mergedDF3)
+
+summary(mergedDF3)
 
 # KPI 1 - Percentual de professores por sexo
 
