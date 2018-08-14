@@ -13,6 +13,11 @@ DM_IES <- read.csv(file = 'DM_IES.csv',
                    fileEncoding = "latin1", 
                    sep = ";" )
 
+DM_IES[is.na(DM_IES)] == 0
+
+View(DM_IES)
+
+
 DM_IES_FILTERED <- subset.data.frame(x = DM_IES,
                                      subset = DM_IES$SGL_UF_IES == "RS") %>% select('CO_IES', 
                                                                                     'SGL_UF_IES', 
@@ -43,8 +48,23 @@ DM_CURSO <- read.csv(file = 'DM_CURSO.csv',
                                            'QT_VAGAS_PRINCIPAL_VESPERTINO',
                                            'QT_INSCRITOS_PRINCIPAL_MATU',
                                            'QT_INSCRITOS_PRINCIPAL_VESP',
-                                           'QT_INSCRITOS_PRINCIPAL_NOTURNO'
+                                           'QT_INSCRITOS_PRINCIPAL_NOTURNO',
                                            'QT_INSCRITOS_PRINCIPAL_INTE')
+
+
+#ETL NA TO 0
+dados <- data.frame(DM_CURSO)
+dados$substituir <- c(DM_CURSO$QT_VAGAS_PRINCIPAL_EAD)
+View(dados)
+
+dados[is.na(dados)] <- 0
+
+DM_CURSO
+
+summary(dados)
+
+View(DM_CURSO)
+
 
 DM_IGC <- setNames(read.csv(file = 'DM_IGC.csv',
                             header = TRUE,
