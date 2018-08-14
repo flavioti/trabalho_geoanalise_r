@@ -110,7 +110,6 @@ names(kp1_candidato_vaga)[2] = "Curso"
 names(kp1_candidato_vaga)[3] = "Qtde vagas"
 names(kp1_candidato_vaga)[4] = "Qtde Inscritos"
 
-
 kp1_candidato_vaga <- data.frame(kp1_candidato_vaga, 0)
 names(kp1_candidato_vaga)[5] = "Aluno x Vaga"
 kp1_candidato_vaga[is.na(kp1_candidato_vaga)] <- 0
