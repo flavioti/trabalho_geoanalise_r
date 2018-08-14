@@ -21,10 +21,12 @@ View(DM_IES)
 
 
 DM_IES_FILTERED <- subset.data.frame(x = DM_IES,
-                                     subset = DM_IES$SGL_UF_IES == "RS") %>% select('CO_IES', 
-                                                                                    'SGL_UF_IES', 
-                                                                                    'NO_IES',
-                                                                                    'NO_MUNICIPIO_IES')
+                                     subset = DM_IES$SGL_UF_IES == "RS" &&
+                                       DM_IES$SGL_UF_IES == "PR" &&
+                                       DM_IES$SGL_UF_IES == "SC") %>% select('CO_IES', 
+                                                                             'SGL_UF_IES', 
+                                                                             'NO_IES',
+                                                                             'NO_MUNICIPIO_IES')
 DM_DOCENTE <- read.csv(file = 'DM_DOCENTE.csv',
                        header = TRUE,
                        stringsAsFactors = FALSE,
