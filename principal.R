@@ -119,5 +119,5 @@ kp1_candidato_vaga$`Aluno x Vaga` <- round(divide_by(kp1_candidato_vaga$Qtde.Ins
 kp1_candidato_vaga[is.na(kp1_candidato_vaga)] <- 0
 View(kp1_candidato_vaga)
 
-
+# KPI 5 - Wait for group 
 
