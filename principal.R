@@ -1,8 +1,10 @@
 install.packages("magrittr")
 install.packages("dplyr")
+install.packages("plyr")
 
 library(magrittr)
 library(dplyr)
+library(plyr)
 
 # mude esse diretorio- ele deve informar onde estão os arquivos csv
 setwd('C:/Users/emerson.silva/Documents/workspace/learn/mba/trabalho_geoanalise_r/warehouse')
@@ -107,12 +109,15 @@ names(kp1_candidato_vaga)[1] = "Nome Instituição"
 names(kp1_candidato_vaga)[2] = "Curso"
 names(kp1_candidato_vaga)[3] = "Qtde vagas"
 names(kp1_candidato_vaga)[4] = "Qtde Inscritos"
-kp1_candidato_vaga <- data.frame(kp1_candidato_vaga$candidato_x_vaga, 0)
 
 
-kp1_candidato_vaga <- data.frame(kp1_candidato_vaga)
+kp1_candidato_vaga <- data.frame(kp1_candidato_vaga, 0)
+names(kp1_candidato_vaga)[5] = "Aluno x Vaga"
 kp1_candidato_vaga[is.na(kp1_candidato_vaga)] <- 0
+
+kp1_candidato_vaga$`Aluno x Vaga` <- round(kp1_candidato_vaga$Qtde.vagas / kp1_candidato_vaga$Qtde.Inscritos)
 View(kp1_candidato_vaga)
+
 
 
 
