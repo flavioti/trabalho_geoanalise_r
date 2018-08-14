@@ -115,9 +115,9 @@ kp1_candidato_vaga <- data.frame(kp1_candidato_vaga, 0)
 names(kp1_candidato_vaga)[5] = "Aluno x Vaga"
 kp1_candidato_vaga[is.na(kp1_candidato_vaga)] <- 0
 
-kp1_candidato_vaga$`Aluno x Vaga` <- round(kp1_candidato_vaga$Qtde.vagas / kp1_candidato_vaga$Qtde.Inscritos)
+kp1_candidato_vaga$`Aluno x Vaga` <- round(divide_by(kp1_candidato_vaga$Qtde.Inscritos, kp1_candidato_vaga$Qtde.vagas))
+kp1_candidato_vaga[is.na(kp1_candidato_vaga)] <- 0
 View(kp1_candidato_vaga)
-
 
 
 
