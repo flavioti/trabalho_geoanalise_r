@@ -74,12 +74,9 @@ mergedDF3 <- merge(x = mergedDF2,
 
 View(mergedDF3)
 
+#Changed NA to 0
 mergedDF3 <- data.frame(mergedDF3)
 mergedDF3[is.na(mergedDF3)] <- 0
-
-View(mergedDF3)
-
-summary(mergedDF3)
 
 # KPI 1 - Percentual de professores por sexo
 
@@ -100,22 +97,9 @@ kpi1_qtd_docente_por_raca$percent <- prop.table(kpi1_qtd_docente_por_raca$n) * 1
 View(kpi1_qtd_docente_por_raca)
 
 # KPI 4 - Total de alunos (SUGESTÃO)
-# ...
 
-kpi1_relacao_candidato_x_vaga_por_curso <- count(DM_CURSO, c(DM_CURSO$NO_CURSO, 
-                                                             DM_CURSO$NO_IES))
+kp1_qtd_aluno_vespertino_ead_por_curso <- sum(mergedDF3, c(mergedDF3$NO_IES,
+                                                             mergedDF3$QT_VAGAS_PRINCIPAL_EAD)))
 
-                                                             # KPI 4 - Total de alunos (SUGESTÃO)
-# ...
-MEDIA_INSCRITOS_EAD <- round(mean(DM_CURSO$QT_INSCRITOS_PRINCIPAL_EAD, na.rm = TRUE))
-MEDIA_INSCRITOS_INTEGRAL <- round(mean(DM_CURSO$QT_VAGAS_PRINCIPAL_INTEGRAL, na.rm = TRUE))
-MEDIA_INSCRITOS_MATUTINO <- round(mean(DM_CURSO$QT_VAGAS_PRINCIPAL_MATUTINO, na.rm = TRUE))
-MEDIA_INSCRITOS_VESPERTINO <- round(mean(DM_CURSO$QT_VAGAS_PRINCIPAL_VESPERTINO, na.rm = TRUE))
-MEDIA_INSCRITOS_VESPERTINO <- round(mean(DM_CURSO$QT_VAGAS_PRINCIPAL_NOTURNO, na.rm = TRUE))
-
-kpi1_relacao_candidato_x_vaga_por_curso <- count(mergedDF3, c(mergedDF3$NO_CURSO, 
-                                                              mergedDF3$NO_IES))
-
-
-
+View(kp1_qtd_aluno_vespertino_ead_por_curso)
 
