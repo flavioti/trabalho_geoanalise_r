@@ -102,23 +102,23 @@ View(kpi1_qtd_docente_por_raca)
 
 # KPI 4 - Relação Candidato Vaga por Curso Noturno
 
-kp1_candidato_vaga <- data.frame(mergedDF3$NO_IES,
+kp1_candidato_x_vaga_por_curso_noturno <- data.frame(mergedDF3$NO_IES,
                                  mergedDF3$NO_CURSO,
                                  mergedDF3$QT_VAGAS_PRINCIPAL_NOTURNO,
                                  mergedDF3$QT_INSCRITOS_PRINCIPAL_NOTURNO)
 
-names(kp1_candidato_vaga)[1] = "Nome Instituição"
-names(kp1_candidato_vaga)[2] = "Curso"
-names(kp1_candidato_vaga)[3] = "Qtde vagas"
-names(kp1_candidato_vaga)[4] = "Qtde Inscritos"
+names(kp1_candidato_x_vaga_por_curso_noturno)[1] = "Nome Instituição"
+names(kp1_candidato_x_vaga_por_curso_noturno)[2] = "Curso"
+names(kp1_candidato_x_vaga_por_curso_noturno)[3] = "Qtde vagas"
+names(kp1_candidato_x_vaga_por_curso_noturno)[4] = "Qtde Inscritos"
 
-kp1_candidato_vaga <- data.frame(kp1_candidato_vaga, 0)
-names(kp1_candidato_vaga)[5] = "Aluno x Vaga"
-kp1_candidato_vaga[is.na(kp1_candidato_vaga)] <- 0
+kp1_candidato_x_vaga_por_curso_noturno <- data.frame(kp1_candidato_x_vaga_por_curso_noturno, 0)
+names(kp1_candidato_x_vaga_por_curso_noturno)[5] = "Aluno x Vaga"
+kp1_candidato_x_vaga_por_curso_noturno[is.na(kp1_candidato_x_vaga_por_curso_noturno)] <- 0
 
-kp1_candidato_vaga$`Aluno x Vaga` <- round(divide_by(kp1_candidato_vaga$Qtde.Inscritos, kp1_candidato_vaga$Qtde.vagas))
-kp1_candidato_vaga[is.na(kp1_candidato_vaga)] <- 0
-View(kp1_candidato_vaga)
+kp1_candidato_x_vaga_por_curso_noturno$`Aluno x Vaga` <- round(divide_by(kp1_candidato_x_vaga_por_curso_noturno$Qtde.Inscritos, kp1_candidato_x_vaga_por_curso_noturno$Qtde.vagas))
+kp1_candidato_x_vaga_por_curso_noturno[is.na(kp1_candidato_x_vaga_por_curso_noturno)] <- 0
+View(kp1_candidato_x_vaga_por_curso_noturno)
 
-# KPI 5 - Wait for group 
+# KPI 5 - Faculdade Publica que mais gasta com Docentes
 
