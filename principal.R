@@ -7,7 +7,7 @@ library(dplyr)
 library(plyr)
 
 # mude esse diretorio- ele deve informar onde estão os arquivos csv
-setwd('C:/Users/emerson.silva/Documents/workspace/learn/mba/trabalho_geoanalise_r/warehouse')
+setwd('C:/Users/cedro_nds/Documents/workspace/trabalho_geoanalise_r/warehouse')
 
 DM_IES <- read.csv(file = 'DM_IES.csv', 
                    header = TRUE, 
@@ -21,12 +21,16 @@ View(DM_IES)
 
 
 DM_IES_FILTERED <- subset.data.frame(x = DM_IES,
-                                     subset = DM_IES$SGL_UF_IES == "RS" &&
-                                       DM_IES$SGL_UF_IES == "PR" &&
-                                       DM_IES$SGL_UF_IES == "SC") %>% select('CO_IES', 
-                                                                             'SGL_UF_IES', 
-                                                                             'NO_IES',
-                                                                             'NO_MUNICIPIO_IES')
+                                     subset = DM_IES$SGL_UF_IES == "RS") %>% select('CO_IES', 
+                                                         'SGL_UF_IES', 
+                                                         'NO_IES',
+                                                         'NO_MUNICIPIO_IES',
+                                                         'DS_CATEGORIA_ADMINISTRATIVA',
+                                                         'QT_TEC_MESTRADO_FEM',
+                                                         'QT_TEC_MESTRADO_MASC',
+                                                         'VL_DES_PESSOAL_REM_DOCENTE')
+
+
 DM_DOCENTE <- read.csv(file = 'DM_DOCENTE.csv',
                        header = TRUE,
                        stringsAsFactors = FALSE,
@@ -103,9 +107,9 @@ View(kpi1_qtd_docente_por_raca)
 # KPI 4 - Relação Candidato Vaga por Curso Noturno
 
 kp1_candidato_x_vaga_por_curso_noturno <- data.frame(mergedDF3$NO_IES,
-                                 mergedDF3$NO_CURSO,
-                                 mergedDF3$QT_VAGAS_PRINCIPAL_NOTURNO,
-                                 mergedDF3$QT_INSCRITOS_PRINCIPAL_NOTURNO)
+                                                     mergedDF3$NO_CURSO,
+                                                     mergedDF3$QT_VAGAS_PRINCIPAL_NOTURNO,
+                                                     mergedDF3$QT_INSCRITOS_PRINCIPAL_NOTURNO)
 
 names(kp1_candidato_x_vaga_por_curso_noturno)[1] = "Nome Instituição"
 names(kp1_candidato_x_vaga_por_curso_noturno)[2] = "Curso"
