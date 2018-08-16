@@ -7,18 +7,14 @@ library(dplyr)
 library(plyr)
 
 # mude esse diretorio- ele deve informar onde estão os arquivos csv
-setwd('C:/Users/cedro_nds/Documents/workspace/trabalho_geoanalise_r/warehouse')
+setwd('/Users/emerson/Documents/workspace/mba/trabalho_geoanalise_r/warehouse')
 
 DM_IES <- read.csv(file = 'DM_IES.csv', 
                    header = TRUE, 
                    stringsAsFactors = FALSE, 
                    fileEncoding = "latin1", 
                    sep = ";" )
-
-DM_IES[is.na(DM_IES)] == 0
-
 View(DM_IES)
-
 
 DM_IES_FILTERED <- subset.data.frame(x = DM_IES,
                                      subset = DM_IES$SGL_UF_IES == "RS") %>% select('CO_IES', 
@@ -88,7 +84,7 @@ mergedDF3[is.na(mergedDF3)] <- 0
 
 # KPI 1 - Percentual de professores por sexo
 
-kpi1_qtd_docente_por_sexo <- count(mergedDF3, c(DS_SEXO_DOCENTE))
+kpi1_qtd_docente_por_sexo <- count(mergedDF3, c(mergedDF3$DS_SEXO_DOCENTE))
 kpi1_qtd_docente_por_sexo$percent <- prop.table(kpi1_qtd_docente_por_sexo$n) * 100
 View(kpi1_qtd_docente_por_sexo)
 
@@ -125,4 +121,9 @@ kp1_candidato_x_vaga_por_curso_noturno[is.na(kp1_candidato_x_vaga_por_curso_notu
 View(kp1_candidato_x_vaga_por_curso_noturno)
 
 # KPI 5 - Faculdade Publica que mais gasta com Docentes
+
+# KPI 6 - Liberar a rabiola geral
+
+count(if(soucorno) 1 else 0, qtdNamorada - probabilidade(sergay))
+publishResult(if(resultFalse) facebook else ficoDentroArmario)
 
